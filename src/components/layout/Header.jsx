@@ -10,7 +10,7 @@ export default function Header() {
       <nav className="flex gap-2">
         <NavLink to={'/'} className={'px-3 py-2 hover:bg-slate-300 text-main'} >Pets</NavLink>
         <NavLink to={'/medications'} className={'px-3 py-2 hover:bg-slate-300 text-main'}>Medications</NavLink>
-        <NavLink to={'/pets/add-pet'} className={'px-3 py-2 hover:bg-slate-300 text-main'}>Add Pet</NavLink>
+        <NavLink to={'/pets/add'} className={'px-3 py-2 hover:bg-slate-300 text-main'}>Add Pet</NavLink>
       </nav>
       </div>
       <hr className="border-main/50"/>
