@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import PetsPage from "../pages/PetsPage";
+import PetsPage from "../../pages/PetsPage";
 
 
 export default function Header() {
