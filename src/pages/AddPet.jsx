@@ -29,14 +29,15 @@ export default function AddPet() {
       client_email: Yup.string().trim().email().lowercase().matches(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, 'Patikrinkite email').required(),
     }),
     onSubmit: (values) => {
-      sendAxios(values)
+      sendPetAxios(values)
       console.log('values ===', values);
     },
   });
 
-  function sendAxios(dataToSend) {
-    axios.post('https://glittery-dull-snickerdoodle.glitch.me/v1/pets', dataToSend)
+  function sendPetAxios(dataToSend) {
+    axios.post(url, dataToSend)
     .then((resp) => {
+      console.log('resp data ===', resp.data);
       if (resp.status === 200) {
         navigate('/pets')
       }
@@ -44,16 +45,17 @@ export default function AddPet() {
     .catch((error) => console.warn('ivyko klaida:', error))
   }
 
+  console.log('formik.values ===', formik.values);
   return (
     <div className="container">
       <PageHeader link={'/'} pName={'Add pet'} bName={'Go Back'}/>
       
-      <form noValidate onSubmit={formik.handleSubmit} className="grid gap-x-5">
+      <form onSubmit={formik.handleSubmit} className="grid gap-x-5">
         {/* one input */}
         <SmartInput name={'name'} formik={formik}/>
         <SmartInput name={'dob'} type={'date'} formik={formik}/>
         <SmartInput name={'client_email'} type={'email'} formik={formik}/>
-        <Btn type="submit">Add</Btn>
+        <Btn type="submit">SUBMIT</Btn>
       </form>
     </div>
   );

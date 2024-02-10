@@ -1,7 +1,6 @@
-
+import React from 'react';
 
 function SmartInput({ name, formik, type = 'text', placeholder }) {
-
   if (!name) {
     console.warn('SmartInput nera name');
   }
