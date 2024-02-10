@@ -1,5 +1,16 @@
-export default function Btn({children, outline, type = 'button', className = '', onClick = () => {}}) {
+import { Link } from 'react-router-dom';
+
+export default function Button({ onClick = () => {}, children, outline, type = 'button', to }) {
+  const Element = to ? Link : 'button';
   return (
-    <div type={type} className={` ${outline ? ' bg-white  text-main' : ' bg-main text-white'} border-main text-sm border px-6 py-2 uppercase font-semibold rounded-md + ${className}`}onClick={onClick}>{children}</div>
-  )
+    <Element
+      onClick={onClick}
+      className={`${
+        outline ? 'bg-white text-main' : 'bg-main text-white'
+      }  px-6 py-2 text-sm uppercase border font-semibold border-main rounded-md`}
+      type={type}
+      to={to}>
+      {children}
+    </Element>
+  );
 }

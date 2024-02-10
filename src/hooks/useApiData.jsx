@@ -1,9 +1,9 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-export default function useApiData(url) {
+export default function useApiData(url, initData = []) {
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState(initData)
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState({})
 
