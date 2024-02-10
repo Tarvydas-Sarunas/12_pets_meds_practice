@@ -16,18 +16,19 @@ export default function PetsPage() {
       <Link to={'/add-pet'}> <Btn >Add Pet</Btn> </Link>
       </div>
       <ul>
-      {/* {petsArr.map(() => )} */}
-        <li>
+      {Array.isArray(petsArr) && petsArr.map((pObj, index) => <li key={index}>
           <Card>
-            <h3 className="text-xl mb-2 font-bold">Lese</h3>
-            <p >data</p>
-            <p className="mb-4">email</p>
+            <h3 className="text-xl mb-2 font-bold">{pObj.name}</h3>
+            <p >{new Date(pObj.dob).toLocaleDateString()}</p>
+            <p className="mb-4">{pObj.client_email}</p>
             <div className="flex gap-1">
+              <Link to={'/pets/1'}>
               <Btn>View Logs</Btn>
+              </Link>
               <Btn outline>Delete</Btn>
             </div>
           </Card>
-        </li>
+        </li>)}
       </ul>
     </div>
   )
