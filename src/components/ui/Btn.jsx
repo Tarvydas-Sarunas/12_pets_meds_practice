@@ -1,5 +1,5 @@
-export default function Btn({children}) {
+export default function Btn({children, outline}) {
   return (
-    <div className="bg-main px-6 py-2 text-white uppercase font-semibold rounded-md">{children}</div>
+    <div className={` ${outline ? ' bg-white  text-main' : ' bg-main text-white'} border-main  border px-6 py-2 uppercase font-semibold rounded-md`}>{children}</div>
   )
 }
