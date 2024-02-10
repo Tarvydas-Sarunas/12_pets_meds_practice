@@ -13,9 +13,9 @@ export default function PetsPage() {
     <div className="container">
       <div className=" my-5 flex items-center justify-between">
       <h1 className="text-main text-4xl ">Pets List</h1>
-      <Link to={'/pets/add-pet'}> <Btn >Add Pet</Btn> </Link>
+      <Link to={'/pets/add'}> <Btn >Add Pet</Btn> </Link>
       </div>
-      <ul>
+      <ul className="grid grid-cols-3 gap-5 pb-44">
       {petsArr.map((pObj, index) => <li key={index}>
           <Card>
             <h3 className="text-xl mb-2 font-bold">{pObj.name}</h3>
