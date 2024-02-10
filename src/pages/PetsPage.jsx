@@ -13,7 +13,7 @@ export default function PetsPage() {
     <div className="container">
       <div className=" my-5 flex items-center justify-between">
       <h1 className="text-main text-4xl ">Pets List</h1>
-      <Link to={'/add-pet'}> <Btn >Add Pet</Btn> </Link>
+      <Link to={'/pets/add-pet'}> <Btn >Add Pet</Btn> </Link>
       </div>
       <ul>
       {petsArr.map((pObj, index) => <li key={index}>

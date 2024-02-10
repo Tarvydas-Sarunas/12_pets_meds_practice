@@ -11,7 +11,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<PetsPage />} />
         <Route path="/medications" element={<MedicationPage />} />
-        <Route path="/add-pet" element={<AddPet />} />
+        <Route path="/pets/add-pet" element={<AddPet />} />
       </Routes>
     </div>
   );
