@@ -2,37 +2,24 @@ import * as Yup from 'yup';
 import axios from "axios"
 import Btn from "../components/ui/Btn";
 import { useFormik } from 'formik';
+import SmartInput from '../components/ui/SmartInput';
+import PageHeader from '../components/layout/PageHeader';
+import { useNavigate } from 'react-router';
 
-function SmartInput({name, formik, type = 'text', placeholder}) {
-  return (
-    <label className="block mb-4">
-      <span className="text-lg block first-letter:uppercase">{name}</span>
-      <input 
-        onChange={formik.handleChange} 
-        onBlur={formik.handleBlur} 
-        value={formik.values[name]} 
-        name={name} 
-        className={`border w-full px-2 py-[5px] rounded-md ${formik.touched[name] && formik.errors[name] ? 'border-red-500 bg-red-50': 'border-slate-300' } `} 
-        type={type} 
-        placeholder={placeholder || 'Enter ' + name}
-      />
-      {formik.touched[name] && formik.errors[name] && 
-        <div className="bg-red-100 text-red-900 px-4 py-1 mt-2 rounded-md">
-          <p>{formik.errors[name]}</p>
-        </div>
-      }
-    </label>
-  );
-}
 
 export default function AddPet() {
   const url = 'https://glittery-dull-snickerdoodle.glitch.me/v1/pets';
+
+
 
   const initialValues = {
     name: 'Dogis',
     dob: '2000-01-01',
     client_email: 'admin@mail.com',   
   };
+
+  const navigate = useNavigate()
+
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -48,20 +35,24 @@ export default function AddPet() {
   });
 
   function sendAxios(dataToSend) {
-    axios.post(url, dataToSend)
-    .then((resp) => console.log('resp ===', resp))
+    axios.post('https://glittery-dull-snickerdoodle.glitch.me/v1/pets', dataToSend)
+    .then((resp) => {
+      if (resp.status === 200) {
+        navigate('/pets')
+      }
+      console.log('resp ===', resp)})
     .catch((error) => console.warn('ivyko klaida:', error))
   }
 
   return (
     <div className="container">
-      <h1 className="text-4xl my-5">Add pet</h1>
+      <PageHeader link={'/'} pName={'Add pet'} bName={'Go Back'}/>
+      
       <form noValidate onSubmit={formik.handleSubmit} className="grid gap-x-5">
         {/* one input */}
         <SmartInput name={'name'} formik={formik}/>
         <SmartInput name={'dob'} type={'date'} formik={formik}/>
         <SmartInput name={'client_email'} type={'email'} formik={formik}/>
-        <button type='submit'>Submit</button>
         <Btn type="submit">Add</Btn>
       </form>
     </div>

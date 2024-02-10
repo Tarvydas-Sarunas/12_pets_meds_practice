@@ -1,22 +1,20 @@
-import { Link } from "react-router-dom";
-import Btn from "../components/ui/Btn";
+
 import useApiData from "../hooks/useApiData";
-import Card from "../components/ui/Card";
 import SinglePetCard from "../components/pets/SinglePetCard";
+import PageHeader from "../components/layout/PageHeader";
 
 const url = 'https://glittery-dull-snickerdoodle.glitch.me/v1/pets'
 
 export default function PetsPage() {
 
-   const [petsArr, setPetsArr] = useApiData(url)
+   const [petsArr, setPetsArr, isLoading] = useApiData(url)
 
   return (
     <div className="container">
-      <div className=" my-5 flex items-center justify-between">
-      <h1 className="text-main text-4xl ">Pets List</h1>
-      <Link to={'/pets/add'}> <Btn >Add Pet</Btn> </Link>
-      </div>
-      <ul className="grid grid-cols-3 gap-5 pb-44">
+      <PageHeader link={'/pets/add'} pName={'Pets List'} bName={'Add Pet'}/>
+      
+      {isLoading && <p className="text-4xl px-4 py-3 border rounded-md text-center">Loading...</p>}
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-44">
       {petsArr.map((pObj, index) =>
           <SinglePetCard key={index} item={pObj}/>
         )}
