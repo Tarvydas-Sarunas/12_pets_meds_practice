@@ -16,7 +16,7 @@ export default function PetsPage() {
       <Link to={'/add-pet'}> <Btn >Add Pet</Btn> </Link>
       </div>
       <ul>
-      {Array.isArray(petsArr) && petsArr.map((pObj, index) => <li key={index}>
+      {petsArr.map((pObj, index) => <li key={index}>
           <Card>
             <h3 className="text-xl mb-2 font-bold">{pObj.name}</h3>
             <p >{new Date(pObj.dob).toLocaleDateString()}</p>

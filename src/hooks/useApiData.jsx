@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 export default function useApiData(url) {
 
-  const [data, setData] = useState({})
+  const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState({})
 
