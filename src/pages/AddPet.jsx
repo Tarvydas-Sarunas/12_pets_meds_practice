@@ -38,8 +38,8 @@ export default function AddPet() {
     initialValues: initialValues,
     validationSchema: Yup.object({
       name: Yup.string().min(3).max(15, 'biski trumpiau please').trim().required(),
-      dob: Yup.date().required(),
-      client_email: Yup.string().trim().matches(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, 'Patikrinkite email').required(),
+      dob: Yup.date().min('01/01/2000').required(),
+      client_email: Yup.string().trim().email().lowercase().matches(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, 'Patikrinkite email').required(),
     }),
     onSubmit: (values) => {
       sendAxios(values)
