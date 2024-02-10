@@ -1,9 +1,10 @@
 
 
-export default function Card({children}) {
+export default function Card({children, li = ''}) {
+const Element = li ? 'li' : 'div'
   return (
-    <div className='border rounded-md px-4 py-3 inline-block text-center'>
+    <Element className='border rounded-md px-4 py-3 inline-block text-center'>
       {children}
-    </div>
+    </Element>
   )
 }

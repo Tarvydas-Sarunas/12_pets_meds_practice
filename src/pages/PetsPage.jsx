@@ -17,9 +17,9 @@ export default function PetsPage() {
       <Link to={'/pets/add'}> <Btn >Add Pet</Btn> </Link>
       </div>
       <ul className="grid grid-cols-3 gap-5 pb-44">
-      {petsArr.map((pObj, index) => <li key={index}>
-          <SinglePetCard item={pObj}/>
-        </li>)}
+      {petsArr.map((pObj, index) =>
+          <SinglePetCard key={index} item={pObj}/>
+        )}
       </ul>
     </div>
   )
