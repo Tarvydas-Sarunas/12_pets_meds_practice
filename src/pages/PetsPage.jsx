@@ -8,7 +8,7 @@ const url = 'https://glittery-dull-snickerdoodle.glitch.me/v1/pets'
 
 export default function PetsPage() {
 
-   const [petsArr, setPetsArr, isLoading] = useApiData(url)
+   const [petsArr, setPetsArr, isLoading, error, reFetch] = useApiData(url)
 
    function handleDelete(petId) {
     axios.delete(`https://glittery-dull-snickerdoodle.glitch.me/v1/pets/${petId}`)
@@ -18,6 +18,8 @@ export default function PetsPage() {
           const newPetsArr = petsArr.filter((pObj) => pObj.id !== petId)
           setPetsArr(newPetsArr)
         }
+        // arba iskvieciu reFetch kad isnaujo partrauktu duomenis is db
+        // reFetch()
       })
       .catch(error => {
         console.warn('ivyko klaida:', error);

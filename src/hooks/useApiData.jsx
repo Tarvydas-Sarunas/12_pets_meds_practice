@@ -6,6 +6,9 @@ export default function useApiData(url, initData = []) {
   const [data, setData] = useState(initData)
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState({})
+  const [resetData, setResetData] = useState(false)
+
+  const reFetch = () => setResetData(!resetData)
 
   useEffect(() => {
     setIsLoading(true)
@@ -20,7 +23,7 @@ export default function useApiData(url, initData = []) {
     .finally(() => {
       setIsLoading(false)
     })
-  }, [url])
+  }, [url, resetData])
 
-  return [data, setData, isLoading, isError];
+  return [data, setData, isLoading, isError, reFetch];
 }
