@@ -14,6 +14,10 @@ export default function PetsPage() {
     axios.delete(`https://glittery-dull-snickerdoodle.glitch.me/v1/pets/${petId}`)
       .then((resp) => {
         console.log('resp ===', resp)
+        if (resp.status === 200) {
+          const newPetsArr = petsArr.filter((pObj) => pObj.id !== petId)
+          setPetsArr(newPetsArr)
+        }
       })
       .catch(error => {
         console.warn('ivyko klaida:', error);

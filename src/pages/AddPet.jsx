@@ -37,8 +37,7 @@ export default function AddPet() {
   function sendPetAxios(dataToSend) {
     axios.post(url, dataToSend)
     .then((resp) => {
-      console.log('resp data ===', resp.data);
-      if (resp.data.lastID) {
+      if (resp.status === 200) {
         navigate('/')
       }
       console.log('resp ===', resp)})
