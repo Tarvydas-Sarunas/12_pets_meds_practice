@@ -47,7 +47,9 @@ export default function AddPet() {
   console.log('formik.values ===', formik.values);
   return (
     <div className="container">
-      <PageHeader link={'/'} pName={'Add pet'} bName={'Go Back'}/>
+      <PageHeader pName={'Add pet'}>
+        <Btn to={'/'}>Go Back</Btn>
+      </PageHeader>
       
       <form onSubmit={formik.handleSubmit} className="grid gap-x-5">
         {/* one input */}

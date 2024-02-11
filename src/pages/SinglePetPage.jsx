@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import PageHeader from "../components/layout/PageHeader";
 import useApiData from "../hooks/useApiData";
 import Card from "../components/ui/Card";
+import Btn from "../components/ui/Btn";
 
 const logsUrl = 'https://glittery-dull-snickerdoodle.glitch.me/v1/logs/'
 const petsUrl = 'https://glittery-dull-snickerdoodle.glitch.me/v1/pets/'
@@ -27,7 +28,10 @@ console.log('currentPetObj ===', currentPetObj);
 
   return (
     <div className="container">
-    <PageHeader link={'/'} pName={`${currentPetObj?.name || ''}: Health Records  `} bName={'Go back'}/>
+    <PageHeader pName={`${currentPetObj?.name || ''}: Health Records  `}>
+      <Btn to={'/logs/add'}>Add Log</Btn>
+      <Btn outline to={'/presc/add'}>Add Prescription</Btn>
+    </PageHeader>
 
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {curentPetArr.map((lObj) => <Card li key={lObj.status}>
