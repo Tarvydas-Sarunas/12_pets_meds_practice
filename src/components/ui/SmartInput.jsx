@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SmartInput({ name, formik, type = 'text', placeholder }) {
+function SmartInput({ name, formik, type = 'text', placeholder, readOnly = false }) {
   if (!name) {
     console.warn('SmartInput nera name');
   }
@@ -26,6 +26,7 @@ function SmartInput({ name, formik, type = 'text', placeholder }) {
         type={type}
         rows={type === 'textarea' ? 4 : undefined}
         placeholder={placeholder || 'Enter ' + name}
+        readOnly={readOnly}
       />
       {formik.touched[name] && formik.errors[name] && (
         <p className='bg-red-100 text-red-800 rounded-md px-4 py-1 mt-2'>{formik.errors[name]}</p>

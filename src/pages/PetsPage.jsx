@@ -10,7 +10,7 @@ const url = 'https://glittery-dull-snickerdoodle.glitch.me/v1/pets'
 export default function PetsPage() {
 
    const [petsArr, setPetsArr, isLoading, error, reFetch] = useApiData(url)
-
+console.log('petsArr ===', petsArr);
    function handleDelete(petId) {
     axios.delete(`https://glittery-dull-snickerdoodle.glitch.me/v1/pets/${petId}`)
       .then((resp) => {
